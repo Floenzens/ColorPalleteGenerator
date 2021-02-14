@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Pallete Generator</title>
+</head>
+<body>
+<p>Select and upload image</p>
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <input type="file" name="image"><br>
+    <input type="submit" value="Upload">
+</form>
+
+{% if image_str %}
+<img src="data:image/png;base64,{{image_str}}" width="500">
+{% endif %}
+
+
+{% if colors %}
+    {% for color in colors %}
+    <p style="background-color: {{ color }}">{{ color}} - {{ colors[color] }}</p>
+    {% endfor %}
+{% endif %}
+
+</body>
+</html>
